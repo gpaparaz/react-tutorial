@@ -14,7 +14,7 @@ const Product = (props) => {
     <article>
         <div className="card">
       <img src = {img} alt={alt} />
-            <h6>{nome}</h6>
+            <h5>{nome}</h5>
             <br/>
             <p>2,16 €</p>
 

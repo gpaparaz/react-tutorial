@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <h2>la nostra prima card</h2>
       <div className='content'>
-      <Product nome={primaCard.nome} prezzo={primaCard.prezzo} img={primaCard.img}/>
+      <Product {...primaCard}/>
       <Product nome={secondaCard.nome} prezzo={secondaCard.prezzo} img={secondaCard.img} />
       </div>
     </div>
