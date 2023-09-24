@@ -1,11 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import Componente1 from './Componente1';
+import Product from './Product';
 
 function App() {
   return (
     <div className="App">
-      <Componente1></Componente1>
+      <h2>la nostra prima card</h2>
+      <div className='content'>
+
+      <Product/>
+
+      <Product/>
+
+      <Product/>
+
+      <Product/>
+      </div>
     </div>
   );
 }
