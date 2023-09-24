@@ -1,14 +1,16 @@
 import React from 'react'
 
 const Product = (props) => {
-    const prezzo = props.prezzo;
     const alt = "valore";
-    const nome = props.nome;
-    const img = props.img;
 
     const pStyle = {
         textTransform: 'uppercase'
     }
+
+    // dichiaro le chiavi, che corrispondono ai valori che voglio estrarre
+    const {
+        prezzo, nome, img
+    }  = props;
 
   return (
     <article>
