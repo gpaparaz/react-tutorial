@@ -12,7 +12,8 @@ function App() {
       <div className='content'>
       {
         products.map(product => {
-          return <Product prodotto = {product}/>
+          const {id} = product;
+          return <Product key = {id} prodotto = {product}/>
         })
       }
       </div>
