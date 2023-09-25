@@ -1,21 +1,20 @@
 import React from 'react'
 
 const Product = (props) => {
-    const alt = "valore";
 
     const pStyle = {
         textTransform: 'uppercase'
     }
 
-    // dichiaro le chiavi, che corrispondono ai valori che voglio estrarre
+    // dichiaro le chiavi, che corrispondono ai valori che voglio estrarre. sto destrutturando props
     const {
         prezzo, nome, img
-    }  = props;
+    }  = props.prodotto;
 
   return (
     <article>
         <div className="card">
-      <img src = {img} alt={alt} />
+      <img src = {img}  />
             <h5>{nome}</h5>
             <br/>
             <p>2,16 €</p>
