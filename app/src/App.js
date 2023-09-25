@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Product from './Product';
 import products from './products';
+import ErroreBase from './errorebase';
 function App() {
 
 
@@ -17,6 +18,8 @@ function App() {
         })
       }
       </div>
+      <h2>Errore base: </h2>
+      <ErroreBase/>
     </div>
   );
 }
