@@ -3,6 +3,7 @@ import './App.css';
 import Product from './Product';
 import products from './products';
 import ErroreBase from './errorebase';
+import ArrayState from './useState-array';
 function App() {
 
 
@@ -20,6 +21,9 @@ function App() {
       </div>
       <h2>Errore base: </h2>
       <ErroreBase/>
+
+      <h2>Array state</h2>
+      <ArrayState/>
     </div>
   );
 }
