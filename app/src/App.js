@@ -5,6 +5,7 @@ import products from './products';
 import ErroreBase from './errorebase';
 import ArrayState from './useState-array';
 import StateObject from './useState.object';
+import CounterComponent from './useState-contatore';
 function App() {
 
 
@@ -28,6 +29,9 @@ function App() {
 
       <h2>Object state</h2>
       <StateObject/>
+
+      <h2>Contatore</h2>
+      <CounterComponent/>
     </div>
   );
 }
