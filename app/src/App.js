@@ -4,6 +4,7 @@ import Product from './Product';
 import products from './products';
 import ErroreBase from './errorebase';
 import ArrayState from './useState-array';
+import StateObject from './useState.object';
 function App() {
 
 
@@ -24,6 +25,9 @@ function App() {
 
       <h2>Array state</h2>
       <ArrayState/>
+
+      <h2>Object state</h2>
+      <StateObject/>
     </div>
   );
 }
