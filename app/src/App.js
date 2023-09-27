@@ -11,6 +11,7 @@ import Hideorshowcomponent from './hideorshowcomponent';
 import ControlledInput from './input-object-state';
 import RefExample from './useref-example';
 import ModalParent from './modal-parent';
+import MainComponent from './prop-drilling';
 function App() {
 
 
@@ -43,7 +44,8 @@ function App() {
       {/* <Hideorshowcomponent />
       <ControlledInput /> */}
       {/* <RefExample /> */}
-      <ModalParent />
+      {/* <ModalParent /> */}
+      <MainComponent />
     </div>
   );
 }
