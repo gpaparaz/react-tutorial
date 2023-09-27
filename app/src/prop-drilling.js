@@ -30,10 +30,13 @@ const MainComponent = () => {
   );
 };
 
-const Elenco = ({people}) => {
+const Elenco = () => {
+  /* mettiamo caso che voglio accedere a people. adesso non mi serve più dichiarare people nel costruttore di elenco 
+  ma mi basta usare il context */
+  const info = useContext(AppContext);
   return (
     <div>
-      {people.map((el, index) => {
+      {info.people.map((el, index) => {
           return <Persona key={el.id} {...el}/>
       })}
     </div>
