@@ -10,6 +10,7 @@ import FetchData from './useEffect-fetch';
 import Hideorshowcomponent from './hideorshowcomponent';
 import ControlledInput from './input-object-state';
 import RefExample from './useref-example';
+import ModalParent from './modal-parent';
 function App() {
 
 
@@ -39,9 +40,10 @@ function App() {
 
       {/* <FetchData/> */}
 
-      <Hideorshowcomponent />
-      <ControlledInput />
-      <RefExample />
+      {/* <Hideorshowcomponent />
+      <ControlledInput /> */}
+      {/* <RefExample /> */}
+      <ModalParent />
     </div>
   );
 }
