@@ -8,6 +8,7 @@ import StateObject from './useState.object';
 import CounterComponent from './useState-contatore';
 import FetchData from './useEffect-fetch';
 import Hideorshowcomponent from './hideorshowcomponent';
+import ControlledInput from './input-object-state';
 function App() {
 
 
@@ -38,6 +39,7 @@ function App() {
       {/* <FetchData/> */}
 
       <Hideorshowcomponent />
+      <ControlledInput />
     </div>
   );
 }
