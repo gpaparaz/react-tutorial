@@ -6,13 +6,14 @@ import ErroreBase from './errorebase';
 import ArrayState from './useState-array';
 import StateObject from './useState.object';
 import CounterComponent from './useState-contatore';
+import FetchData from './useEffect-fetch';
 function App() {
 
 
 
   return (
     <div className="App">
-      <h2>la nostra prima card</h2>
+      {/* <h2>la nostra prima card</h2>
       <div className='content'>
       {
         products.map(product => {
@@ -31,7 +32,9 @@ function App() {
       <StateObject/>
 
       <h2>Contatore</h2>
-      <CounterComponent/>
+      <CounterComponent/> */}
+
+      <FetchData/>
     </div>
   );
 }
