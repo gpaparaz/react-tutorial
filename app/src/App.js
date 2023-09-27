@@ -9,6 +9,7 @@ import CounterComponent from './useState-contatore';
 import FetchData from './useEffect-fetch';
 import Hideorshowcomponent from './hideorshowcomponent';
 import ControlledInput from './input-object-state';
+import RefExample from './useref-example';
 function App() {
 
 
@@ -40,6 +41,7 @@ function App() {
 
       <Hideorshowcomponent />
       <ControlledInput />
+      <RefExample />
     </div>
   );
 }
