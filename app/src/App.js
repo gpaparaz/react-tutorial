@@ -7,6 +7,7 @@ import ArrayState from './useState-array';
 import StateObject from './useState.object';
 import CounterComponent from './useState-contatore';
 import FetchData from './useEffect-fetch';
+import Hideorshowcomponent from './hideorshowcomponent';
 function App() {
 
 
@@ -34,7 +35,9 @@ function App() {
       <h2>Contatore</h2>
       <CounterComponent/> */}
 
-      <FetchData/>
+      {/* <FetchData/> */}
+
+      <Hideorshowcomponent />
     </div>
   );
 }
