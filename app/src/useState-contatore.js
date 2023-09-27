@@ -7,11 +7,11 @@ const CounterComponent = () => {
     setContatore(0)
   }
 
-  const aumenta = () => {
-    setContatore((oldValue) => {
-      return oldValue +1;
-    });
-  }
+setTimeout( function(){
+  if(contatore <10)
+  setContatore((oldValue) =>{
+return oldValue +1} )
+}, 2000);
 
   return (
     <div className="bg-white shadow rounded py-5 w-75 col-6 offset-3">
@@ -19,7 +19,7 @@ const CounterComponent = () => {
       <div className="d-flex justify-content-between">
 
       <button className="button my-2" onClick={() => setContatore(contatore -1)}>Diminuisci</button>
-      <button className="button my-2" onClick={() => aumenta()}>Aumenta</button>
+      <button className="button my-2">Aumenta</button>
       </div>
       <button className="button reset-button my-2" onClick={() => reset()}>Resetta</button>
     </div>
