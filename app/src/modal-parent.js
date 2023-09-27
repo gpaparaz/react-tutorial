@@ -14,10 +14,12 @@ const reducer = (state, action) => {
     if(action.type === 'PREMO_BOTTONE')
         console.log('bottone premuto')
     if(action.type === 'APRI_MODAL'){
+        console.log(action)
         return  {
             // prima copio tutte le proprietà e poi modifico quelle che mi interessano
             ...state,
-            isModalOpen: true
+            isModalOpen: true,
+            modalContent: action.payload
         }
     }
 
@@ -50,7 +52,7 @@ const ModalParent = () => {
     }
 
     const apriModal = () => {
-        dispatch({type:'APRI_MODAL'})
+        dispatch({type:'APRI_MODAL', payload:'messaggio personalizzato'})
     }
 
     const chiudiModal = () => {
