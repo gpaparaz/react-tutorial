@@ -13,6 +13,7 @@ import RefExample from './useref-example';
 import ModalParent from './modal-parent';
 import MainComponent from './prop-drilling';
 import FetchComponents from './fetch-custom';
+import PropComponent from './prop-types';
 function App() {
 
 
@@ -47,7 +48,8 @@ function App() {
       {/* <RefExample /> */}
       {/* <ModalParent /> */}
       {/* <MainComponent /> */}
-      <FetchComponents />
+      {/* <FetchComponents /> */}
+      <PropComponent />
     </div>
   );
 }
