@@ -12,6 +12,7 @@ import ControlledInput from './input-object-state';
 import RefExample from './useref-example';
 import ModalParent from './modal-parent';
 import MainComponent from './prop-drilling';
+import FetchComponents from './fetch-custom';
 function App() {
 
 
@@ -45,7 +46,8 @@ function App() {
       <ControlledInput /> */}
       {/* <RefExample /> */}
       {/* <ModalParent /> */}
-      <MainComponent />
+      {/* <MainComponent /> */}
+      <FetchComponents />
     </div>
   );
 }
