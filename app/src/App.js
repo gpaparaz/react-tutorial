@@ -14,6 +14,7 @@ import ModalParent from './modal-parent';
 import MainComponent from './prop-drilling';
 import FetchComponents from './fetch-custom';
 import PropComponent from './prop-types';
+import Memo from './useMemo';
 function App() {
 
 
@@ -49,7 +50,8 @@ function App() {
       {/* <ModalParent /> */}
       {/* <MainComponent /> */}
       {/* <FetchComponents /> */}
-      <PropComponent />
+      {/* <PropComponent /> */}
+      <Memo />
     </div>
   );
 }
