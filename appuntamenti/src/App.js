@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import List from './list';
 
 function App() {
   return (
     <div className="App">
-      Hello World
-      <button className="btn btn-primary" >Click me</button>
+      <List />
     </div>
   );
 }
