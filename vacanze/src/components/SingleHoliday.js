@@ -23,11 +23,11 @@ const SingleHoliday = ({
           </h5>
         </div>
         <div className="btn-group">
-          <button type="button" className="btn btn-primary " onClick={prev}>
+          <button type="button" className="btn btn-reset" onClick={prev}>
             <GrFormPreviousLink className="icon" />{" "}
           </button>
-  
-          <button type="button" className="btn btn-primary" onClick={next}>
+
+          <button type="button" className="btn btn-reset" onClick={next}>
             {" "}
             <GrFormNextLink className="icon" />{" "}
           </button>

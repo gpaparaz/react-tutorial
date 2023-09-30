@@ -25,6 +25,30 @@ const Holiday = () => {
     }
   }
 
+
+  //nelle seguenti funzioni vado a inserire anche un controllo sulla lunghezza dell'array
+  //funzione per scelgiere prossimo valore di selected e prossima vacanza
+  const nextHoliday = () => {
+    setSelected((prevValue) => {
+      if (prevValue + 1 === data.data.length) {
+        return 0;
+      } else {
+        return prevValue + 1;
+      }
+    });
+  };
+
+  //Return Funzionale per controllare valore
+  const prevHoliday = () => {
+    setSelected((prevValue) => {
+      if (prevValue - 1 < 0) {
+        return data.data.length - 1;
+      } else {
+        return prevValue - 1;
+      }
+    });
+  };
+
   //NB: con l'array inserito in fondo a useEffect sto indicato che questo fetch voglio che venga effettuato solo una volta 
   useEffect(() => {
     getData()
@@ -40,7 +64,9 @@ const Holiday = () => {
     // data.data.lenght > 0 ? <SingleHoliday {
     //   ...data.data[selected]
     // }/> : <h4>Niente vacanze</h4>
-    <SingleHoliday {...data.data[selected] } />
+    <SingleHoliday {...data.data[selected]}
+      next={nextHoliday}
+      prev={prevHoliday} />
 
   }
   </>)
