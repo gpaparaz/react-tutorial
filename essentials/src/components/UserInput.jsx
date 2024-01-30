@@ -2,27 +2,7 @@ import React, { useState } from "react";
 
 /* responsible for fetch user inputs, es importo investimento iniziale ecc */
 
-const UserInput = () => {
-  //utilizzo uno stato unico per gestire tutti e 4 gli input, dichiarando un valore iniziale
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 1000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  //gestione delle modifiche input
-  function handleChange(inputIdentifier, newValue) {
-    //ho bisogno di memorizzare prima lo stato precedente, perchè altrimenti gli altri valori andrebbero persi
-    setUserInput((preUserInput) => {
-      //ritorno una copia dello stato iniziale, e poi aggiorno il singolo dato
-      return {
-        ...preUserInput,
-        //dynamic set property depending wich selected value
-        [inputIdentifier]: newValue,
-      };
-    });
-  }
+const UserInput = ({onChange, userInput}) => {
 
   /* in onChange non posso fare onChange = {handleChange()} perchè passerebbe un oggetto evento predefinito
     generato automaticamente da React, e sarebbe solo un parametro invece che due.
@@ -39,7 +19,7 @@ const UserInput = () => {
             required
             value={userInput.initialInvestment}
             onChange={(event) =>
-              handleChange("initialInvestment", event.target.value)
+                onChange("initialInvestment", event.target.value)
             }
           />
         </p>
@@ -51,7 +31,7 @@ const UserInput = () => {
             required
             value={userInput.annualInvestment}
             onChange={(event) =>
-              handleChange("annualInvestment", event.target.value)
+                onChange("annualInvestment", event.target.value)
             }
           />
         </p>
@@ -65,7 +45,7 @@ const UserInput = () => {
             required
             value={userInput.expectedReturn}
             onChange={(event) =>
-              handleChange("expectedReturn", event.target.value)
+                onChange("expectedReturn", event.target.value)
             }
           />
         </p>
@@ -76,7 +56,7 @@ const UserInput = () => {
             type="number"
             required
             value={userInput.duration}
-            onChange={(event) => handleChange("duration", event.target.value)}
+            onChange={(event) => onChange("duration", event.target.value)}
           />
         </p>
       </div>
