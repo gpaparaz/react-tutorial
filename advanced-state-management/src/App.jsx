@@ -72,15 +72,13 @@ function App() {
   //qualsiasi componente wrappato all'interno di context può avere accesso a questi valori
   const ctxValue = {
     items: shoppingCart.items,
-    addItemToCart: handleAddItemToCart
+    addItemToCart: handleAddItemToCart,
+    updateItemQuantity : handleUpdateCartItemQuantity
   }
 
   return (
     <CartContext.Provider value={ctxValue}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+      <Header/>
       <Shop>
       {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
