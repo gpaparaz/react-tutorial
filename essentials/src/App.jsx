@@ -10,6 +10,12 @@ per farlo quindi necessito che tramite props la funzion handleChange venga chiam
 passo un puntatore a questa funzione usando onChange = {handleChange} (va bene un nome qualunque,
 potrebbe anche chiamarsi onChangeHandle). assieme alla funzione necessito di passare anche l'oggetto userInput*/
 
+/* NB: in onChange={(event) =>
+                onChange("initialInvestment", event.target.value)
+  se passo event.target.value sto passando una stringa. ma in questo caso ho bisogno di passare 
+  un numero per fare gli opportuni calcoli. quindi in newValue devo aggiungere uno + davanti per forzare
+  la conversione a numero
+*/ 
 
 function App() {
 
@@ -28,8 +34,8 @@ function App() {
       //ritorno una copia dello stato iniziale, e poi aggiorno il singolo dato
       return {
         ...preUserInput,
-        //dynamic set property depending wich selected value
-        [inputIdentifier]: newValue,
+        //dynamic set property depending wich selected value. aggiungo uno + per forzare la conversione in numero
+        [inputIdentifier]: +newValue,
       };
     });
   }
