@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 import { DUMMY_PRODUCTS } from "../dummy-products";
 
 export const CartContext = createContext({
@@ -8,11 +8,36 @@ export const CartContext = createContext({
   updateItemQuantity: () => {},
 });
 
+//definisco questa funzione esternamente a CartContextProvider perchè non deve essere 
+//ricreata ogni volta che la funzione componente viene eseguita, inoltre non avrà bisogno di 
+//accedere a oggetti di scena o altro
+function shoppingCartReducer(state, action) {
+
+
+    //si restituisce lo stato aggiornato
+    return state;
+}
+
 //si occupa di gestire i dati di contesto e fornirli. tratterà il contesto relativo al carrello
 export default function CartContextProvider({ children }) {
   const [shoppingCart, setShoppingCart] = useState({
     items: [],
   });
+
+  /* invece di usare funzioni complesse che gestiscono gli stati uso un reducer.
+  un reducer è una funzione che riduce uno o più valori complessi ad una semplice, ad esempio 
+  un array di numeri in un numero semplice. 
+  in un componente react posso eseguire useReducer come un qualunque hook. 
+  fornirà un array di due elementi, esattamente come useState; il primo elemento sarà eseguito 
+  da useReducer, e il secondo valore non sarà una funzione di aggiornamento stato, bensì un dispatch.
+  il dispatch invia delle azioni che saranno gestita da una funzione riduttore
+  */
+
+  const [shoppingCartState, shoppingCartDispatch ] = useReducer(shoppingCartReducer, {
+    items: [],
+  });
+
+
 
   function handleAddItemToCart(id) {
     setShoppingCart((prevShoppingCart) => {
@@ -72,7 +97,7 @@ export default function CartContextProvider({ children }) {
 
   //qualsiasi componente wrappato all'interno di context può avere accesso a questi valori
   const ctxValue = {
-    items: shoppingCart.items,
+    items: shoppingCartState.items,
     addItemToCart: handleAddItemToCart,
     updateItemQuantity: handleUpdateCartItemQuantity,
   };
