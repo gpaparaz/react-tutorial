@@ -3,6 +3,7 @@ import Places from "./Places.jsx";
 
 export default function AvailablePlaces({ onSelectPlace }) {
   const [availablePlaces, setAvailablePlaces] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
   //tramite il fetch stiamo facendo una promise che tornerà valori diversi in base allo stato della promise
   /* potrei fare una cosa tipo 
   const places = await fetch('....') 
@@ -14,9 +15,11 @@ export default function AvailablePlaces({ onSelectPlace }) {
 
   useEffect(() => {
     async function fetchPlaces() {
+      setIsFetching(true)
       const response = await fetch("http://localhost:3000/places");
       const resData = await response.json();
       setAvailablePlaces(resData.places);
+      setIsFetching(false)
     }
 
     fetchPlaces();
@@ -28,6 +31,8 @@ export default function AvailablePlaces({ onSelectPlace }) {
     <Places
       title="Available Places"
       places={availablePlaces}
+      isLoading = {isFetching}
+      loadingText = "Fetching data..."
       fallbackText="No places available."
       onSelectPlace={onSelectPlace}
     />
