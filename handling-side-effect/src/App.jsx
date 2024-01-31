@@ -7,10 +7,16 @@ import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
+const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+const storedPlaces = storedIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
+
 function App() {
+
   const modal = useRef();
   const selectedPlace = useRef();
-  const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
   const [availablePlaces, setAvailablePlaces] = useState([]);
 
   /* useEffect richiede due parametri: il primo è la funzione che effettua delle modifiche, il secondo è 
@@ -30,12 +36,28 @@ function App() {
       );
 
       /* ora che abbiamo questi sortedPlaces vogliamo anche usarli per renderizzarli in ordine,
-  quindi ci serve usare gli stati
-  */
+      quindi ci serve usare gli stati
+      */
 
       setAvailablePlaces(sortedPlaces);
     });
   }, []);
+
+  /* questo useEffect non serve perchè qui il recupero dei dati è immediato. nel primo caso invece 
+  lo useEffect era necessario perchè l'operazione 
+  navigator.geolocation.getCurrentPosition 
+  è sincrona! 
+  posso quindi tranquillamente spostare questo codice in testa, fuori dal componente
+
+  useEffect(() => {
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
+    const storedPlaces = storedIds.map((id) => 
+    AVAILABLE_PLACES.find((place) => place.id === id))
+
+    setPickedPlaces(storedPlaces)
+  })
+
+  */
 
   function handleStartRemovePlace(id) {
     modal.current.open();
@@ -76,8 +98,10 @@ function App() {
     modal.current.close();
 
     const storeIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
-    localStorage.setItem("selectedPlaces", JSON.stringify(storeIds.filter((id) => id !== selectedPlace.current)));
-
+    localStorage.setItem(
+      "selectedPlaces",
+      JSON.stringify(storeIds.filter((id) => id !== selectedPlace.current))
+    );
   }
 
   return (
