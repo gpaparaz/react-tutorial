@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 import Places from "./components/Places.jsx";
 import { AVAILABLE_PLACES } from "./data.js";
@@ -91,7 +91,9 @@ function App() {
     }
   }
 
-  function handleRemovePlace() {
+  /* useCallback ritorna un valore, ovvero una funzione, ma fa in modo che non venga ricreata di continuo.
+  questo permetterà a DeleteConfirmation di non essere ricreata in loop */
+ const handleRemovePlace =  useCallback(function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
@@ -102,7 +104,7 @@ function App() {
       "selectedPlaces",
       JSON.stringify(storeIds.filter((id) => id !== selectedPlace.current))
     );
-  }
+  }, []) //react ricreerà questa funzione solo se le dipendenze cambiano
 
   return (
     <>
