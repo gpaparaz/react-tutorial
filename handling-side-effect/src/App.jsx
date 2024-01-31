@@ -46,7 +46,9 @@ function App() {
     modal.current.close();
   }
 
+  //esempio di side effect
   function handleSelectPlace(id) {
+    //questa prima parte prevede un cambiamento della ui
     setPickedPlaces((prevPickedPlaces) => {
       if (prevPickedPlaces.some((place) => place.id === id)) {
         return prevPickedPlaces;
@@ -54,6 +56,17 @@ function App() {
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+
+    /*questa seconda parte no, ma anche qui avviene un side effect
+    non abbiamo bisogno di inglobare questo pezzo di codice in un useEffect, e pur volendo non potremmo nemmeno 
+    farlo perchè siamo all'interno di una funzione
+    questo codice non entra nemmeno in un loop infinito perchè non stiamo aggiornando nessuno stato
+    */
+
+    const storeIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    if (storeIds.indexOf(id) === -1) {
+      localStorage.setItem("selectedPlaces", JSON.stringify([id, ...storeIds]));
+    }
   }
 
   function handleRemovePlace() {
@@ -61,6 +74,10 @@ function App() {
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
     modal.current.close();
+
+    const storeIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    localStorage.setItem("selectedPlaces", JSON.stringify(storeIds.filter((id) => id !== selectedPlace.current)));
+
   }
 
   return (
