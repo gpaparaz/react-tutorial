@@ -1,15 +1,25 @@
-import { useRef } from "react";
+import { useState } from "react";
 
 export default function Login() {
-    const email = useRef()
-    const password = useRef()
+
+  const [enteredValues, setEnteredValues] = useState({
+    email: '',
+    password: ''
+  })
+
   function handleSubmit(event) {
     /* permette di non inviare subito il form quando si clicca il bottone submit, in quanto il bottone 
     stesso è di tipo submit */
     event.preventDefault();
-    console.log(email.current.value)
+    console.log(enteredValues)
   }
 
+  function handleInputChange(identifier, event) {
+    setEnteredValues(prevValues => ({
+      ...prevValues,
+      [identifier]: event.target.value
+    }))
+  }
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
@@ -20,13 +30,15 @@ export default function Login() {
           <input id="email" 
           type="email" 
           name="email" 
-          ref={email}/>
+          value={enteredValues.email}
+          onChange={(event) => handleInputChange('email', event)}/>
         </div>
 
         <div className="control no-margin">
           <label htmlFor="password">Password</label>
           <input id="password" type="password" name="password" 
-          ref={password}/>
+          value={enteredValues.password}
+          onChange={(event) => handleInputChange('password', event)}/>
         </div>
       </div>
 
